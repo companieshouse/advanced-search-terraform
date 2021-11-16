@@ -45,7 +45,7 @@ variable "es_application_logs_enabled" {
 
 variable "es_instance_count" {
   default       = 1
-  description   = "The number of ElasticSearch EC2 instances to be provisoned"
+  description   = "The number of ElasticSearch EC2 instances to be provisioned"
   type          = number
 }
 
