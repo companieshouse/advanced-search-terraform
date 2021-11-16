@@ -1,0 +1,6 @@
+account_name = "development"
+dedicated_master_instance_type = "t3.medium.elasticsearch"
+environment = "apollo1"
+es_instance_type = "t3.medium.elasticsearch"
+region = "eu-west-2"
+vpc_name = "Test & Development"
