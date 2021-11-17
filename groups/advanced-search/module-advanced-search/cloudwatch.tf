@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_log_group" "advanced_search_elasticsearch" {
-  for_each = var.cloudwatch_logging_enabled ? toset(["${var.environment}"]) : []
+  for_each = var.cloudwatch_logging_enabled ? toset([var.environment]) : []
 
   name = "${var.service}-${var.environment}-log-group"
 
@@ -11,7 +11,7 @@ resource "aws_cloudwatch_log_group" "advanced_search_elasticsearch" {
 }
 
 resource "aws_cloudwatch_log_resource_policy" "logs" {
-  for_each = var.cloudwatch_logging_enabled ? toset(["${var.environment}"]) : []
+  for_each = var.cloudwatch_logging_enabled ? toset([var.environment]) : []
 
   policy_document = data.aws_iam_policy_document.logs.json
   policy_name     = "${var.service}-${var.environment}-logs-policy"
