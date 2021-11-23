@@ -1,0 +1,7 @@
+account_name = "live"
+dedicated_master_instance_type = "t3.large.elasticsearch"
+environment = "live"
+es_instance_count = 3
+es_instance_type = "t3.large.elasticsearch"
+region = "eu-west-2"
+vpc_name = "CHS"
