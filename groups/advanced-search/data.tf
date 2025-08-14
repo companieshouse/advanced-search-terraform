@@ -43,10 +43,10 @@ data "aws_vpc" "vpc" {
   }
 }
 
-data "vault_generic_secret" "internal_cidrs" {
-  path = "aws-accounts/network/internal_cidr_ranges"
-}
-
 data "vault_generic_secret" "secrets" {
   path = "team-${var.team}/${var.account_name}/${var.region}/${var.environment}/${var.repository_name}"
+}
+
+data "aws_ec2_managed_prefix_list" "admin" {
+  name = "administration-cidr-ranges"
 }
