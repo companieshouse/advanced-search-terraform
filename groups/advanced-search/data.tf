@@ -1,17 +1,22 @@
 data "aws_caller_identity" "current" {}
 
 data "aws_subnet" "accessible_from" {
-  count = length(data.aws_subnet_ids.accessible_from.ids)
-  id    = tolist(data.aws_subnet_ids.accessible_from.ids)[count.index]
+  count = length(data.aws_subnets.accessible_from.ids)
+
+  id = data.aws_subnets.accessible_from.ids[count.index]
 }
 
 data "aws_subnet" "placement" {
-  count = length(data.aws_subnet_ids.placement.ids)
-  id    = tolist(data.aws_subnet_ids.placement.ids)[count.index]
+  count = length(data.aws_subnets.placement.ids)
+
+  id = data.aws_subnets.placement.ids[count.index]
 }
 
-data "aws_subnet_ids" "accessible_from" {
-  vpc_id = data.aws_vpc.vpc.id
+data "aws_subnets" "accessible_from" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
 
   filter {
     name   = "tag:Name"
@@ -19,8 +24,11 @@ data "aws_subnet_ids" "accessible_from" {
   }
 }
 
-data "aws_subnet_ids" "placement" {
-  vpc_id = data.aws_vpc.vpc.id
+data "aws_subnets" "placement" {
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.vpc.id]
+  }
 
   filter {
     name   = "tag:Name"

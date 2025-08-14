@@ -1,9 +1,21 @@
-provider "aws" {
-  region = var.region
+terraform {
+  required_version = ">= 0.13, < 0.14"
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = ">= 5.0, < 6.0"
+    }
+    vault = {
+      source  = "hashicorp/vault"
+      version = ">= 5.0, < 6.0"
+    }
+  }
+
+  backend "s3" {}
 }
 
-terraform {
-  backend "s3" {}
+provider "aws" {
+  region = var.region
 }
 
 module "advanced_search" {
@@ -22,7 +34,7 @@ module "advanced_search" {
   es_instance_count               = var.es_instance_count
   es_instance_type                = var.es_instance_type
   index_slow_logs_enabled         = var.index_slow_logs_enabled
-  placement_subnet_ids            = data.aws_subnet_ids.placement.ids
+  placement_subnet_ids            = data.aws_subnets.placement.ids
   region                          = var.region
   search_slow_logs_enabled        = var.search_slow_logs_enabled
   service                         = var.service
