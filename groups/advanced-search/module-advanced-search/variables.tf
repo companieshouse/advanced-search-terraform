@@ -18,6 +18,11 @@ variable "cluster_accessible_cidrs" {
   type        = list(string)
 }
 
+variable "cluster_accessible_prefix_list_ids" {
+  description = "A list of prefix list Ids that the cluster will be accessible from"
+  type        = list(string)
+}
+
 variable "dedicated_master_enabled" {
   description = "A boolean value indicating whether dedicated master nodes are enabled for the cluster"
   type        = bool
@@ -100,7 +105,7 @@ variable "volume_size" {
 
 variable "vpc_id" {
   description = "The ID of the VPC to be used"
-  type = string
+  type        = string
 }
 
 variable "zone_awareness_enabled" {

@@ -6,7 +6,7 @@ resource "aws_elasticsearch_domain" "advanced_search_elasticsearch" {
 
   # Dedicated master mode
   dynamic "cluster_config" {
-    for_each                   = var.dedicated_master_enabled ? [var.dedicated_master_instance_count] : []
+    for_each = var.dedicated_master_enabled ? [var.dedicated_master_instance_count] : []
 
     content {
       instance_type            = var.instance_type
@@ -27,7 +27,7 @@ resource "aws_elasticsearch_domain" "advanced_search_elasticsearch" {
 
   # Shared master/data node mode
   dynamic "cluster_config" {
-    for_each                 = var.dedicated_master_enabled ? [] : [var.dedicated_master_instance_count]
+    for_each = var.dedicated_master_enabled ? [] : [var.dedicated_master_instance_count]
 
     content {
       instance_type          = var.es_instance_type

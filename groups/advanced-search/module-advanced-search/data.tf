@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "advanced_search_elasticsearch" {
     sid = "AllowAccessToElasticSearchCluster"
 
     principals {
-      type = "AWS"
+      type        = "AWS"
       identifiers = ["*"]
     }
 
