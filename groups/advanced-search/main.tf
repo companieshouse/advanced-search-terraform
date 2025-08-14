@@ -19,7 +19,7 @@ provider "aws" {
 }
 
 module "advanced_search" {
-  source                          = "./module-advanced-search"
+  source = "./module-advanced-search"
 
   aws_account_id       = data.aws_caller_identity.current.account_id
   environment          = var.environment

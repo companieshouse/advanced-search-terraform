@@ -105,7 +105,7 @@ variable "volume_size" {
 
 variable "vpc_id" {
   description = "The ID of the VPC to be used"
-  type = string
+  type        = string
 }
 
 variable "zone_awareness_enabled" {

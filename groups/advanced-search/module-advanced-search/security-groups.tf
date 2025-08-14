@@ -1,6 +1,6 @@
 resource "aws_security_group" "advanced_search_elasticsearch" {
-  name        = "${var.environment}-${var.service}-elasticsearch-security-group"
-  vpc_id      = var.vpc_id
+  name   = "${var.environment}-${var.service}-elasticsearch-security-group"
+  vpc_id = var.vpc_id
 
   ingress = []
 
